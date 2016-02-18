@@ -1,0 +1,117 @@
+{
+    "name":                                             "darsyn/crewsalam",
+    "license":                                          "MIT",
+    "type":                                             "project",
+    "description":                                      "Crew Salam",
+    "autoload": {
+        "psr-4": {
+            "AppBundle\\":                              "src/AppBundle/",
+            "Darsyn\\Bundle\\":                         "src/",
+            "Darsyn\\":                                 "lib/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
+    },
+    "require": {
+        "symfony/symfony":                              "2.8.*",
+        "doctrine/orm":                                 "^2.4.8",
+        "doctrine/doctrine-bundle":                     "~1.4",
+        "symfony/swiftmailer-bundle":                   "~2.3",
+        "symfony/monolog-bundle":                       "~2.4",
+        "sensio/distribution-bundle":                   "~5.0",
+        "sensio/framework-extra-bundle":                "^3.0.2",
+
+        "symfony-cmf/core-bundle":                      "^1.3",
+        "symfony-cmf/routing-bundle":                   "^1.3",
+        "symfony-cmf/routing-auto-bundle":              "^1.1",
+        "symfony-cmf/menu-bundle":                      "^2.0",
+
+        "phpcr/phpcr":                                  "^2.1",
+        "phpcr/phpcr-utils":                            "^1.2.8",
+        "jackalope/jackalope":                          "^1.2.7",
+        "jackalope/jackalope-doctrine-dbal":            "^1.2.5",
+        "doctrine/phpcr-bundle":                        "^1.3.1",
+        "doctrine/phpcr-odm":                           "^1.3",
+        "doctrine/doctrine-cache-bundle":               "^1.3",
+        "doctrine/doctrine-migrations-bundle":          "^1.1",
+        "ramsey/uuid":                                  "^3.0",
+        "ramsey/uuid-doctrine":                         "^1.0",
+
+        "friendsofsymfony/user-bundle":                 "^2.0",
+        "friendsofsymfony/rest-bundle":                 "^1.7.7",
+        "friendsofsymfony/oauth-server-bundle":         "^1.5.1",
+
+        "league/commonmark":                            "^0.13",
+        "league/commonmark-extras":                     "^0.1",
+        "webuni/commonmark-table-extension":            "^0.4",
+        "webuni/commonmark-attributes-extension":       "^0.3",
+
+        "atst/stack-backstage":                         "~1.0",
+        "darsyn/stack-ip-restrict":                     "^1.0.2",
+        "darsyn/stack-request-id":                      "^1.0",
+        "stack/builder":                                "~1.0",
+
+        "darsyn/fly-bundle":                            "^1.0",
+        "qandidate/toggle":                             "^1.0",
+        "myclabs/php-enum":                             "^1.4.1",
+        "tga/simhash-php":                              "^2.0",
+        "shrikeh/teapot":                               "^1.0.2",
+        "twbs/bootstrap":                               "^3.3.6",
+        "enyo/dropzone":                                "^4.2",
+
+        "incenteev/composer-parameter-handler":         "^2.0",
+        "vlucas/phpdotenv":                             "~1.1",
+        "ext-redis":                                    "*",
+        "php":                                          ">=5.6"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AppBundle\\Tests\\": "tests/AppBundle/",
+            "DarsynTests\\Bundle\\": "tests/",
+            "DarsynTests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "sensio/generator-bundle":                      "~3.0",
+        "symfony/phpunit-bridge":                       "~2.7",
+        "phpunit/phpunit":                              "^5.0",
+        "doctrine/doctrine-fixtures-bundle":            "^2.3",
+        "php-vcr/php-vcr":                              "@stable",
+        "mikey179/vfsStream":                           "@stable"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ]
+    },
+    "minimum-stability":                                "dev",
+    "prefer-stable":                                    true,
+    "config": {
+        "bin-dir": "bin",
+        "prefer-dist":                                  true
+    },
+    "extra": {
+        "symfony-app-dir":                              "app",
+        "symfony-bin-dir":                              "bin",
+        "symfony-var-dir":                              "var",
+        "symfony-web-dir":                              "web",
+        "symfony-tests-dir":                            "tests",
+        "symfony-assets-install":                       "relative",
+        "incenteev-parameters": {
+            "file":                                     "app/config/parameters.yml"
+        }
+    }
+}

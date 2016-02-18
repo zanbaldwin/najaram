@@ -1,0 +1,37 @@
+services:
+
+    app.commonmark.environment:
+        class: League\CommonMark\Environment
+        factory: [League\CommonMark\Environment, createCommonMarkEnvironment]
+
+    app.commonmark.converter:
+        class: League\CommonMark\CommonMarkConverter
+        arguments:
+            - { safe: "%safe_markdown%" }
+            - "@app.commonmark.environment"
+
+    commonmark:
+        alias: app.commonmark.converter
+
+    # CommonMark Extensions
+    # =====================
+
+    app.commonmark.extension.smart_punct:
+        class: League\CommonMark\Extras\SmartPunct\SmartPunctExtension
+        tags:
+            - { name: commonmark.extension }
+
+    app.commonmark.extension.twitter_handle:
+        class: League\CommonMark\Extras\TwitterHandleAutolink\TwitterHandleAutolinkExtension
+        tags:
+            - { name: commonmark.extension }
+
+    app.commonmark.extension.tables:
+        class: Webuni\CommonMark\TableExtension\TableExtension
+        tags:
+            - { name: commonmark.extension }
+
+    app.commonmark.extension.attributes:
+        class: Webuni\CommonMark\AttributesExtension\AttributesExtension
+        tags:
+            - { name: commonmark.extension }
