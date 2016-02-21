@@ -5,3 +5,4 @@
 /web/bundles/
 /composer.phar
 /phpunit.xml
+.idea/
