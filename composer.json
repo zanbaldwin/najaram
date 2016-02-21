@@ -2,7 +2,7 @@
     "name":                                             "najaram/najaram",
     "license":                                          "MIT",
     "type":                                             "project",
-    "description":                                      "Najaram Cms Blog",
+    "description":                                      "Najaram CMS Blog",
     "autoload": {
         "psr-4": {
             "AppBundle\\":                              "src/AppBundle/",
