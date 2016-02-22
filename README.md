@@ -1,3 +1,3 @@
-# Crew Salam
+# Najaram
 
-Development sandbox for a CMS using [Symfony CMF](http://cmf.symfony.com).
+Development for a CMS using [Symfony](http://symfony.com).
