@@ -43,7 +43,7 @@ class User extends BaseUser
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="user", cascade={"remove"})
      */
-    protected $posts;
+    protected $post;
 
     /**
      * @return \AppBundle\Entity\Invitation
