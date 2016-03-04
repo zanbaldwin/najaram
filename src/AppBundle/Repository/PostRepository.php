@@ -2,7 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\ORM;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * PostRepository
