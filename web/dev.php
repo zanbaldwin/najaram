@@ -19,7 +19,7 @@ $loader = require_once __DIR__ . '/../app/autoload.php';
 // this front-controller.
 Debug::enable();
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel('dev', false);
 $stack = (new Stack\Builder)
     // This middleware prevents access to debug front controllers that are deployed by accident to production servers.
     ->push(Whitelist::class, ['127.0.0.1', 'fe80::1', '::1', '192.168.0.0/16'])

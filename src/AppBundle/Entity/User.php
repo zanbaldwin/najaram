@@ -71,7 +71,7 @@ class User extends BaseUser
      */
     public function addPost(Post $post)
     {
-        $this->posts[] = $post;
+        $this->post[] = $post;
 
         return $this;
     }
@@ -83,7 +83,7 @@ class User extends BaseUser
      */
     public function removePost(Post $post)
     {
-        $this->posts->removeElement($post);
+        $this->post->removeElement($post);
     }
 
     /**
@@ -93,6 +93,6 @@ class User extends BaseUser
      */
     public function getPosts()
     {
-        return $this->posts;
+        return $this->post;
     }
 }
