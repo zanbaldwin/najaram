@@ -43,7 +43,7 @@ class User extends BaseUser
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="author", cascade={"remove"})
      */
-    protected $post;
+    protected $posts;
 
     /**
      * @return \AppBundle\Entity\Invitation
@@ -71,7 +71,7 @@ class User extends BaseUser
      */
     public function addPost(Post $post)
     {
-        $this->post[] = $post;
+        $this->posts[] = $post;
 
         return $this;
     }
@@ -83,7 +83,7 @@ class User extends BaseUser
      */
     public function removePost(Post $post)
     {
-        $this->post->removeElement($post);
+        $this->posts->removeElement($post);
     }
 
     /**
@@ -93,6 +93,6 @@ class User extends BaseUser
      */
     public function getPosts()
     {
-        return $this->post;
+        return $this->posts;
     }
 }

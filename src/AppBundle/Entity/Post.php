@@ -62,7 +62,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
