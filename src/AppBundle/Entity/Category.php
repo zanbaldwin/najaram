@@ -22,6 +22,14 @@ class Category
     private $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Post")
+     * @ORM\JoinTable(name="post_category",
+     *      joinColumns={@ORM\JoinColumn(name="category", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="post", referencedColumnName="id")}
+     * )
+     */
+    private $posts;
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
