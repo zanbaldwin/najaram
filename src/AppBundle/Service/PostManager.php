@@ -5,8 +5,6 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Post;
 use AppBundle\Form\Type;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PostManager
@@ -19,18 +17,11 @@ class PostManager
     private $em;
 
     /**
-     * @var FormFactory
-     */
-    private $formFactory;
-
-    /**
      * @param EntityManager $manager
-     * @param FormFactoryInterface $formFactoryInterface
      */
-    public function __construct(EntityManager $manager, FormFactoryInterface $formFactoryInterface)
+    public function __construct(EntityManager $manager)
     {
         $this->em = $manager;
-        $this->formFactory = $formFactoryInterface;
     }
 
 
