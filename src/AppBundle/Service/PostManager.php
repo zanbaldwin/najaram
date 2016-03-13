@@ -34,21 +34,10 @@ class PostManager
     }
 
 
-    public function createPosts(Request $request)
+    public function createPosts(Post $posts)
     {
-        $posts = new Post();
-
-        $form = $this->formFactory->create(PostType, $posts);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $this->em->persist($posts);
-            $this->em->flush();
-
-            return true;
-        }
-
-        return $form;
+        $this->em->persist($posts);
+        $this->em->flush();
     }
 
     /**
