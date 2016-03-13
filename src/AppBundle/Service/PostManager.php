@@ -43,6 +43,17 @@ class PostManager
         return $posts;
     }
 
+    public function findPost($id)
+    {
+        $post = $this->em->getRepository('AppBundle:Post')->find($id);
+
+        if (!$post) {
+            throw $this->createNotFoundException('Unable to find the given id.');
+        }
+
+        return $post;
+    }
+
     /**
      * Find all the latest posts
      *
