@@ -203,7 +203,7 @@ class Post
      */
     public function getUpdatedAt()
     {
-        return $this->getUpdatedAt;
+        return $this->updatedAt;
     }
 
     /**
