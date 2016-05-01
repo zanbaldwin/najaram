@@ -39,6 +39,7 @@
         "darsyn/stack-ip-restrict":                     "^1.0.2",
         "darsyn/stack-request-id":                      "^1.0",
         "stack/builder":                                "~1.0",
+        "facebook/php-sdk-v4":                          "~5.0",
 
         "incenteev/composer-parameter-handler":         "^2.0",
         "vlucas/phpdotenv":                             "~1.1",

@@ -4,3 +4,11 @@ fos_user:
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
+
+app_facebook_connect:
+    path: /connect/facebook
+    defaults: { _controller: AppBundle:Facebook:login }
+
+app_facebook_connect_callback:
+    path: /connect/facebook/callback
+    defaults: { _controller: AppBundle:Facebook:loginCallback }

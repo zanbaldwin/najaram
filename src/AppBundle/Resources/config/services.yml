@@ -2,3 +2,11 @@ imports:
     - { resource: services/commonmark.yml }
 
 services:
+   facebook:
+       class: Facebook\Facebook
+       arguments:
+          - "@session"
+          - app_id: "%facebook_app_id%"
+            app_secret: "%facebook_app_se%"
+            default_graph_version: "%facebook_graph_version%"
+            default_access_token: "@=service('session').get('facebook_access_token')"
