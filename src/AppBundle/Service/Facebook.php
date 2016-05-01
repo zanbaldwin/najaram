@@ -8,8 +8,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Facebook extends FacebookClient
 {
+    const ACCESS_TOKEN_SESSION_ID = 'facebook_acces_token';
+
     private $session;
     private $currentUser;
+
     public function __construct(SessionInterface $session, array $facebookSettings)
     {
         $this->session = $session;
@@ -22,6 +25,10 @@ class Facebook extends FacebookClient
 
     public function getCurrentUser()
     {
+        if (!$this->session->has(static::ACCESS_TOKEN_SESSION_ID)) {
+            return null;
+        }
+
         if ($this->currentUser !== null) {
             return $this->currentUser;
         }
@@ -29,6 +36,7 @@ class Facebook extends FacebookClient
             $response = $this->get('/me');
             $this->currentUser = $response->getGraphUser();
         } catch (FacebookSDKException $e) {
+
         }
         return $this->currentUser;
     }
