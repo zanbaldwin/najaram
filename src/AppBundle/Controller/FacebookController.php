@@ -3,9 +3,9 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class FacebookController extends Controller
 {
@@ -15,14 +15,17 @@ class FacebookController extends Controller
     {
         $this->fb = $this->get('facebook');
     }
+
     public function loginAction()
     {
         $helper = $this->fb->getRedirectLoginHelper();
         $permission = ['email', 'user_likes'];
 
-        $loginUrl = $helper->getLoginUrl(UrlGeneratorInterface::ABSOLUTE_URL);
-        // will continue this
-        return $this->render('Path to the view', [
+        $url = $this->generateUrl('app_facebook_connect_callback', [], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        $loginUrl = $helper->getLoginUrl($url, $permission);
+
+        return $this->render('AppBundle:Facebook:index.html.twig', [
             'loginurl' => $loginUrl
         ]);
     }
