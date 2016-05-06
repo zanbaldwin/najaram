@@ -11,13 +11,10 @@ class FacebookController extends Controller
 {
     private $fb;
 
-    public function __construct()
-    {
-        $this->fb = $this->get('facebook');
-    }
-
     public function loginAction()
     {
+        $this->fb = $this->get('facebook');
+
         $helper = $this->fb->getRedirectLoginHelper();
         $permission = ['email', 'user_likes'];
 

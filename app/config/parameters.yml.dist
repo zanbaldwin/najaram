@@ -15,8 +15,8 @@ parameters:
     mailer_user:        ~
     mailer_password:    ~
 
-    facebook_app_id:
-    facebook_app_secret:
+    facebook_app_id: 1253797531306865
+    facebook_app_secret: 8a3c21f06871fb799afea85cb5d96947
     facebook_graph_version: v2.2
     facebook_permissions:
         - email

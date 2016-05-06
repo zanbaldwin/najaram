@@ -1,5 +1,13 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
-{% if loginurl %}
-    <a href="{{ loginurl }}">Login</a>
-{% endif %}
+{% block content %}
+    {% if loginurl %}
+        <a href="{{ loginurl }}">Login</a>
+    {% endif %}
+    <div
+    class="fb-like"
+    data-share="true"
+    data-width="450"
+    data-show-faces="true">
+    </div>
+{% endblock content %}
