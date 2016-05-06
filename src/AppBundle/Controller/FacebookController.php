@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class FacebookController extends Controller
@@ -13,9 +14,8 @@ class FacebookController extends Controller
 
     public function loginAction()
     {
-        $this->fb = $this->get('facebook');
+        $helper = $this->getFb()->getRedirectLoginHelper();
 
-        $helper = $this->fb->getRedirectLoginHelper();
         $permission = ['email', 'user_likes'];
 
         $url = $this->generateUrl('app_facebook_connect_callback', [], UrlGeneratorInterface::ABSOLUTE_URL);
@@ -29,7 +29,8 @@ class FacebookController extends Controller
 
     public function loginCallbackAction()
     {
-        $helper = $this->fb->getRedirectLoginHelper();
+
+        $helper = $this->getFb()->getRedirectLoginHelper();
 
         try {
             $accessToken = $helper->getAccessToken();
@@ -42,12 +43,17 @@ class FacebookController extends Controller
         }
 
         if (isset($accessToken)) {
-            $session = $this->container->get('session');
-            $session->set('facebook_access_token', string($accessToken));
+            $session = $this->get('session');
+            $session->set('facebook_access_token', (string)$accessToken);
             $session->save();
 
-            return $session;
+            return new Response($session);
         }
 
+    }
+
+    private function getFb()
+    {
+        return $this->fb = $this->get('facebook');
     }
 }
