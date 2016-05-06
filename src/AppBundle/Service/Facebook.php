@@ -18,11 +18,22 @@ class Facebook extends FacebookClient
         $this->session = $session;
         parent::__construct($facebookSettings);
     }
+
+    /**
+     * Checks if the current user is logged in.
+     *
+     * @return bool
+     */
     public function isLoggedIn()
     {
         return $this->getCurrentUser() !== null;
     }
 
+    /**
+     * Get the current user.
+     *
+     * @return \Facebook\GraphNodes\GraphUser|null
+     */
     public function getCurrentUser()
     {
         if (!$this->session->has(static::ACCESS_TOKEN_SESSION_ID)) {

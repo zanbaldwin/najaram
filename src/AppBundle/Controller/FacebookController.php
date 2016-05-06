@@ -12,6 +12,9 @@ class FacebookController extends Controller
 {
     private $fb;
 
+    /**
+     * @return Response
+     */
     public function loginAction()
     {
         $helper = $this->getFb()->getRedirectLoginHelper();
@@ -27,6 +30,9 @@ class FacebookController extends Controller
         ]);
     }
 
+    /**
+     * @return Response
+     */
     public function loginCallbackAction()
     {
 
@@ -52,6 +58,9 @@ class FacebookController extends Controller
 
     }
 
+    /**
+     * @return \AppBundle\Service\Facebook
+     */
     private function getFb()
     {
         return $this->fb = $this->get('facebook');
