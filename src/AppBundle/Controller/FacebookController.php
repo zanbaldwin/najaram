@@ -53,7 +53,7 @@ class FacebookController extends Controller
             $session->set('facebook_access_token', (string)$accessToken);
             $session->save();
 
-            return new Response($session);
+            return $this->redirectToRoute('app_facebook_connect', array(), 301);
         }
 
     }
