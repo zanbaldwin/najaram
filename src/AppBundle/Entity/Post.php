@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -34,8 +35,16 @@ class Post
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"title"}, unique=false)
      */
     private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=20)
+     */
+    private $image;
 
     /**
      * @var string
@@ -60,7 +69,7 @@ class Post
     private $updatedAt;
 
     /**
-     * @var string
+     * @var int
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
@@ -228,5 +237,29 @@ class Post
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Post
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

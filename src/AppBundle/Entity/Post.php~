@@ -40,6 +40,13 @@ class Post
     /**
      * @var string
      *
+     * @ORM\Column(name="image", type="string", length=20)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="body", type="text")
      * @Assert\NotBlank()
      */
@@ -62,7 +69,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
@@ -203,7 +210,7 @@ class Post
      */
     public function getUpdatedAt()
     {
-        return $this->getUpdatedAt;
+        return $this->updatedAt;
     }
 
     /**
