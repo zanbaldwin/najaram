@@ -9,6 +9,10 @@ app_blog:
     path:    /blog
     defaults: { _controller: AppBundle:Post:index }
 
+app_blog_show:
+    path:    /blog/{slug}
+    defaults: { _controller: AppBundle:Post:show }
+
 app_facebook_connect:
     path: /connect/facebook
     defaults: { _controller: AppBundle:Facebook:login }

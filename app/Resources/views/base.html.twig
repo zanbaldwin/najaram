@@ -5,11 +5,11 @@
         <title>{% block title %}Welcome!{% endblock title %}</title>
         {% block stylesheets %}{% endblock stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/main.css') }}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     </head>
     <body>
-        <div id="wrapper">
-            {% block body %}{% endblock body %}
-        </div>
+        {% block body %}{% endblock body %}
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/main.js') }}"></script>
         {% endblock javascripts %}

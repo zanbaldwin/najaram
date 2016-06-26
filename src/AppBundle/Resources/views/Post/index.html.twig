@@ -1,0 +1,17 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <div class="col-md-8">
+        {% for postcontent in posts %}
+            {{ include('AppBundle:Post:_post.html.twig', { post: postcontent }) }}
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <h2>Latest Posts</h2>
+        {% for post in latestPosts %}
+            {{ include('AppBundle:Post:_sidebar.html.twig', { post: post }) }}
+        {% endfor %}
+    </div>
+{% endblock %}

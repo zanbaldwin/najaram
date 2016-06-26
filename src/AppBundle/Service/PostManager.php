@@ -36,19 +36,25 @@ class PostManager
      *
      * @return \AppBundle\Entity\Post[]|array
      */
-    public function readPosts()
+    public function showAllPosts()
     {
         $posts = $this->em->getRepository('AppBundle:Post')->findAll();
 
         return $posts;
     }
 
-    public function findPost($id)
+    /**
+     * @param $slug
+     * @return Post|null|object
+     */
+    public function findBySlug($slug)
     {
-        $post = $this->em->getRepository('AppBundle:Post')->find($id);
+        $post = $this->em->getRepository('AppBundle:Post')->findOneBy([
+            'slug' => $slug,
+        ]);
 
-        if (!$post) {
-            throw $this->createNotFoundException('Unable to find the given id.');
+        if (null === $post) {
+            throw $this->createNotFoundException('Post was not found.');
         }
 
         return $post;
