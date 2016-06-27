@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,13 +23,14 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Post")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Post", inversedBy="categories")
      * @ORM\JoinTable(name="post_category",
      *      joinColumns={@ORM\JoinColumn(name="category", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="post", referencedColumnName="id")}
      * )
      */
     private $posts;
+
     /**
      * @var string
      *
@@ -36,6 +38,10 @@ class Category
      */
     private $name;
 
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection;
+    }
 
     /**
      * Get id
@@ -70,5 +76,9 @@ class Category
     {
         return $this->name;
     }
+
+    public function getPosts(){return $this->posts;}
+    public function addPost(Post $post){$this->posts->add($post);}
+    public function removePost(Post $post){$this->posts->remove($post);}
 }
 

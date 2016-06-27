@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -78,11 +79,17 @@ class Post
     private $author;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Category", mappedBy="posts")
+     */
+    private $categories;
+
+    /**
      * Construct
      */
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
+        $this->categories = new ArrayCollection;
     }
 
     /**
@@ -262,4 +269,8 @@ class Post
     {
         return $this->image;
     }
+
+    public function getCategories(){return $this->categories;}
+    public function addCategory(Category $category){$this->categories->add($category);}
+    public function removeCategory(Category $category){$this->categories->remove($category);}
 }
